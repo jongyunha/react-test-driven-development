@@ -35,4 +35,15 @@ test('counter display starts at 0', () => {
   expect(count).toBe('0');
 });
 
-test('clicking button increments counter', () => {});
+test('clicking button increments counter', () => {
+  const wrapper = setup();
+  // find the button
+  const btn = findByTestAttr(wrapper, 'increment-button');
+
+  // click the button
+  btn.simulate('click');
+
+  // find the display, and test the number has been incremented
+  const count = findByTestAttr(wrapper, 'count').text();
+  expect(count).toBe('1');
+});
